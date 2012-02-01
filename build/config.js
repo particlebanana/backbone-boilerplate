@@ -48,9 +48,10 @@ config.init({
     "dist/release/css/vendor.css": ["dist/debug/css/vendor.css"]
   },
 
+  // Only watch templates and .styl files in development
   watch: {
-    files: ["assets/**/*", "app/**/*"],
-    tasks: "lint:files concat hogan stylus"
+    files: ['app/templates/**/*.html', 'assets/css/**/*.styl'],
+    tasks: "hogan stylus"
   },
 
   clean: {
