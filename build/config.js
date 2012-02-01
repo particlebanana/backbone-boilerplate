@@ -20,12 +20,18 @@ config.init({
     // Application files
     "dist/debug/js/app.js": ["app/namespace.js", "app/modules/**/*.js", "app/index.js"],
 
-    // Your CSS
-    "dist/debug/css/style.css": ["assets/css/**/*.css"]
+    // Vendor CSS Files
+    "dist/debug/css/vendor.css": [
+      "assets/css/vendor/boilerplate.css"
+    ]
   },
 
-  jst: {
-    "dist/debug/js/templates.js": ["app/templates/**/*.html"]
+  hogan: {
+    'dist/debug/js/templates.js': 'app/templates/**/*.html'
+  },
+
+  stylus: {
+    'dist/debug/css/app.css': 'assets/css/*.styl'
   },
 
   min: {
@@ -35,17 +41,13 @@ config.init({
   },
 
   mincss: {
-    "dist/release/css/style.css": ["dist/debug/css/style.css"]
+    "dist/release/css/app.css": ["dist/debug/css/app.css"],
+    "dist/release/css/vendor.css": ["dist/debug/css/vendor.css"]
   },
 
   watch: {
     files: ["assets/**/*", "app/**/*"],
-    tasks: "lint:files concat jst",
-
-    min: {
-      files: ["assets/**/*", "app/**/*"],
-      tasks: "default"
-    }
+    tasks: "lint:files concat hogan stylus"
   },
 
   clean: {
@@ -55,4 +57,4 @@ config.init({
 });
 
 // Run the following tasks...
-task.registerTask("default", "clean lint:files concat jst min mincss");
+task.registerTask("default", "clean lint:files concat hogan stylus min mincss");
