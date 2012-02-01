@@ -17,6 +17,8 @@ config.init({
       "assets/js/libs/backbone.js"
     ],
 
+    "dist/debug/js/yepnope.js": "assets/js/libs/yepnope.js",
+
     // Application files
     "dist/debug/js/app.js": ["app/namespace.js", "app/modules/**/*.js", "app/index.js"],
 
@@ -35,6 +37,7 @@ config.init({
   },
 
   min: {
+    "dist/release/js/yepnope.js": ["dist/debug/js/yepnope.js"],
     "dist/release/js/libs.js": ["dist/debug/js/libs.js"],
     "dist/release/js/app.js": ["dist/debug/js/app.js"],
     "dist/release/js/templates.js": ["dist/debug/js/templates.js"]
