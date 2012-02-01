@@ -23,18 +23,6 @@ jQuery(function($) {
       // Attach the tutorial to the DOM
       tutorial.render(function(el) {
         $("#main").html(el);
-
-        // Fix for hashes in pushState and hash fragment
-        if (hash && !route._alreadyTriggered) {
-          // Reset to home, pushState support automatically converts hashes
-          Backbone.history.navigate("", false);
-
-          // Trigger the default browser behavior
-          location.hash = hash;
-
-          // Set an internal flag to stop recursive looping
-          route._alreadyTriggered = true;
-        }
       });
     }
   });
@@ -44,7 +32,7 @@ jQuery(function($) {
   app.router = new Router();
 
   // Trigger the initial route and enable HTML5 History API support
-  Backbone.history.start({ pushState: true });
+  Backbone.history.start();
 
   // All navigation that is relative should be passed through the navigate
   // method, to be processed by the router.  If the link has a data-bypass
