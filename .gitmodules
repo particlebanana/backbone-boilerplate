@@ -1,0 +1,3 @@
+[submodule "build/tasks"]
+	path = build/tasks
+	url = git@github.com:particlebanana/build-tasks.git
